@@ -1,0 +1,16 @@
+{
+  "name": "test",
+  "description": "backbone app",
+  "main": "server.js",
+  "authors": [
+    "sp"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sandipeter/starter_repo.git",
+  "private": true,
+  "dependencies": {
+    "angular": "1.6.7",
+    "angular-mocks": "1.6.7",
+    "bootstrap": "3.3.7"
+  }
+}
