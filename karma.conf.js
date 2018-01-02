@@ -9,11 +9,11 @@ module.exports = function (config) {
       'bower_components/angular-mocks/angular-mocks.js',
 
 
-      	'**/*.module.js',
-		'**/*.component.js',
-		'**/*.filter.js',
-		'**/*.service.js',
-		'**/*.spec.js'
+      	'angularjs/**/*.module.js',
+		'angularjs/**/*.component.js',
+		'angularjs/**/*.filter.js',
+		'angularjs/**/*.service.js',
+		'angularjs/**/*.spec.js'
 
       //'*!(.module|.spec).js',
       //'!(bower_components)/**/*!(.module|.spec).js',

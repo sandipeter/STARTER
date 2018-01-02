@@ -6,26 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Starter Template for Bootstrap 3.3.7</title>
+	<title>Test App</title>
 	<link rel="shortcut icon" href="">
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
-	<style>
-		body {
-			padding-top: 50px;
-		}
-
-		.starter-template {
-			padding: 40px 15px;
-			text-align: center;
-		}
-
-	</style>
-
-	<!--[if IE]>
-								<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-								<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-				<![endif]-->
+	<!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+	<!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">-->
+	<link rel="stylesheet" href="css/all.min.css">
 </head>
 
 <body ng-app="app">
@@ -53,17 +38,15 @@
 	</nav>
 
 	<div class="container" ng-controller="appController">
+		<h1>Hello {{author.name}} !</h1>
 
-		<div class="starter-template">
-			<h1>Hello, {{author.name}}</h1>
-			<p class="lead">Now you can start your own project with <a target="_blank" href="http://getbootstrap.com/">Bootstrap 3.3.7</a>. This plugin is a fork from <a href="https://github.com/le717/brackets-html-skeleton#readme">HTML Skeleton</a>.</p>
-		</div>
 	</div>
 
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="app.module.js"></script>
+	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+	<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+	<!--<script src="bower_components/angular/angular.min.js"></script>-->
+	<!--<script src="angularjs/app.module.js"></script>-->
+	<script src="js/all.js"></script>
 </body>
 
 </html>
