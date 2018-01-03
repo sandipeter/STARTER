@@ -1,20 +1,40 @@
-'use strict';
+var mock, notify;
+beforeEach(module('myApp'));
+beforeEach(function() {
+  mock = {alert: jasmine.createSpy()};
 
-describe('appController - TEST', function () {
+  module(function($provide) {
+    $provide.value('$window', mock);
+  });
 
-	beforeEach(module('myApp'));
-	var scope = {};
+  inject(function($injector) {
+    notify = $injector.get('notify');
+  });
+});
 
-	beforeEach(inject(function($controller){
-			$controller('MyController', {$scope: scope});
-	}));
+it('should not alert first two notifications', function() {
+  notify('one');
+  notify('two');
 
-	it('should create an array with objects in it (3)', function () {
-		expect(scope.spices.length).toBe(3);
-	});
+  expect(mock.alert).not.toHaveBeenCalled();
+});
 
-	it('should create an array with objects in it (3)', function () {
-		expect(scope.spice).toBe('habanero');
-	});
+it('should alert all after third notification', function() {
+  notify('one');
+  notify('two');
+  notify('three');
 
+  expect(mock.alert).toHaveBeenCalledWith("one\ntwo\nthree");
+});
+
+it('should clear messages after alert', function() {
+  notify('one');
+  notify('two');
+  notify('third');
+  notify('more');
+  notify('two');
+  notify('third');
+
+  expect(mock.alert.calls.count()).toEqual(2);
+  expect(mock.alert.calls.mostRecent().args).toEqual(["more\ntwo\nthird"]);
 });

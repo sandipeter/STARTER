@@ -1,17 +1,12 @@
-var myApp = angular.module('myApp', []);
+angular.module('expressionExample', [])
+.controller('ExampleController', ['$scope', function($scope) {
+  var exprs = $scope.exprs = [];
+  $scope.expr = '3*10|currency';
+  $scope.addExp = function(expr) {
+    exprs.push(expr);
+  };
 
-myApp.controller('MyController', ['$scope', 'notify', function ($scope, notify) {
-	$scope.callNotify = function (msg) {
-		notify(msg);
-	}
-}]).
-factory('notify', ['$window', function (win) {
-	var msgs = [];
-	return function (msg) {
-		msgs.push(msg);
-		if (msgs.length === 3) {
-			win.alert(msgs.join('\n'));
-			msgs = [];
-		}
-	};
+  $scope.removeExp = function(index) {
+    exprs.splice(index, 1);
+  };
 }]);

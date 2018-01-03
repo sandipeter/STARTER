@@ -37,13 +37,17 @@
 		</div>
 	</nav>
 
-	<div ng-app="myApp">
-		<div id="simple" class="container" ng-controller="MyController">
-			<p>Let's try this simple notify service, injected into the controller...</p>
-			<input ng-init="message='test'" ng-model="message">
-			<button ng-click="callNotify(message);">NOTIFY</button>
-			<p>(you have to click 3 times to see an alert)</p>
-
+	<div ng-app="expressionExample">
+		<div ng-controller="ExampleController" class="expressions">
+			Expression:
+			<input type='text' ng-model="expr" size="80" />
+			<button ng-click="addExp(expr)">Evaluate</button>
+			<ul>
+				<li ng-repeat="expr in exprs track by $index">
+					[ <a href="" ng-click="removeExp($index)">X</a> ]
+					<code>{{expr}}</code> => <span>{{$parent.$eval(expr)}}</span>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
