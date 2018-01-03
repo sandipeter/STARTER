@@ -9,11 +9,21 @@ describe('My app', function () {
 		browser.get('index.html');
 	});
 
-	it('should allow user expression testing', function () {
-		element(by.css('.expressions button')).click();
-		var list = element(by.css('.expressions ul')).all(by.repeater('expr in exprs'));
-		expect(list.count()).toBe(1);
-		expect(list.get(0).getText()).toEqual('[ X ] 3*10|currency => $30.00');
+	it('should calculate expression in binding', function () {
+		if (browser.params.browser === 'safari') {
+			// Safari can't handle dialogs.
+			return;
+		}
+		element(by.css('[ng-click="greet()"]')).click();
+
+		// We need to give the browser time to display the alert
+		browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);
+
+		var alertDialog = browser.switchTo().alert();
+
+		expect(alertDialog.getText()).toEqual('Hello World');
+
+		alertDialog.accept();
 	});
 
 
