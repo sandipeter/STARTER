@@ -1,10 +1,17 @@
-'use strict';
+var myApp = angular.module('myApp', []);
 
-var app = angular.module('app', []);
-
-app.controller('appController', ['$scope', function($scope) {
-
-	$scope.author = {
-		name: 'Sándi Péter'
-	}
+myApp.controller('MyController', ['$scope', function ($scope) {
+	$scope.spices = [{
+			"name": "pasilla",
+			"spiciness": "mild"
+		},
+		{
+			"name": "jalapeno",
+			"spiciness": "hot hot hot!"
+		},
+		{
+			"name": "habanero",
+			"spiciness": "LAVA HOT!!"
+		}]
+	$scope.spice = "habanero";
 }]);

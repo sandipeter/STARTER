@@ -2,15 +2,19 @@
 
 describe('appController - TEST', function () {
 
-	beforeEach(module('app'));
+	beforeEach(module('myApp'));
+	var scope = {};
 
-	it('should create an object with a string variable', inject(function ($controller) {
-		var scope = {};
-		var ctrl = $controller('appController', {
-			$scope: scope
-		});
-
-		expect(scope.author.name).toBe('Sándi Péter');
+	beforeEach(inject(function($controller){
+			$controller('MyController', {$scope: scope});
 	}));
+
+	it('should create an array with objects in it (3)', function () {
+		expect(scope.spices.length).toBe(3);
+	});
+
+	it('should create an array with objects in it (3)', function () {
+		expect(scope.spice).toBe('habanero');
+	});
 
 });
