@@ -38,13 +38,11 @@
 	</nav>
 
 	<div ng-app="myApp">
-		<div class="container" ng-controller="MyController">
-			<h1>Hello {{spice}} !</h1>
-			<ul>
-				<li ng-repeat="s in spices">
-					<p>name: {{s.name}}, spiciness: {{s.spiciness}}</p>
-				</li>
-			</ul>
+		<div id="simple" class="container" ng-controller="MyController">
+			<p>Let's try this simple notify service, injected into the controller...</p>
+			<input ng-init="message='test'" ng-model="message">
+			<button ng-click="callNotify(message);">NOTIFY</button>
+			<p>(you have to click 3 times to see an alert)</p>
 
 		</div>
 	</div>

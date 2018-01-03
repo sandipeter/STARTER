@@ -1,17 +1,17 @@
 var myApp = angular.module('myApp', []);
 
-myApp.controller('MyController', ['$scope', function ($scope) {
-	$scope.spices = [{
-			"name": "pasilla",
-			"spiciness": "mild"
-		},
-		{
-			"name": "jalapeno",
-			"spiciness": "hot hot hot!"
-		},
-		{
-			"name": "habanero",
-			"spiciness": "LAVA HOT!!"
-		}]
-	$scope.spice = "habanero";
+myApp.controller('MyController', ['$scope', 'notify', function ($scope, notify) {
+	$scope.callNotify = function (msg) {
+		notify(msg);
+	}
+}]).
+factory('notify', ['$window', function (win) {
+	var msgs = [];
+	return function (msg) {
+		msgs.push(msg);
+		if (msgs.length === 3) {
+			win.alert(msgs.join('\n'));
+			msgs = [];
+		}
+	};
 }]);
