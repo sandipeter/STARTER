@@ -38,7 +38,12 @@
 	</nav>
 
 	<div ng-app="app">
-	<div ng-controller="myCtrl"></div>
+		<div ng-controller="TestCtrl as test">
+			<input type="text" ng-model="test.myString" />
+			<h2>
+				{{ test.myString | capitalize }}
+			</h2>
+		</div>
 
 	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
