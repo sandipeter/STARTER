@@ -3,54 +3,9 @@ angular.module('greetings', [])
 		return {
 			restrict: "E",
 			scope: {},
-			controller: ['$scope', function ($scope) {
-				$scope.words = [];
-
-				this.sayHello = function () {
-					$scope.words.push("hello");
-				};
-
-				this.sayHowdy = function () {
-					$scope.words.push("howdy");
-				};
-
-				this.sayHi = function () {
-					$scope.words.push("hi");
-				};
-			}],
-
-			link: function (scope, element) {
-				element.bind("mouseenter", function () {
-					console.log(scope.words);
-				});
-			}
+			transclude: true,
+			template: '<div>This is the welcome component</div><ng-transclude></ng-transclude>'
 		}
 	})
 
 
-	.directive("hello", function () {
-		return {
-			require: "welcome",
-			link: function (scope, element, attrs, welcomeCtrl) {
-				welcomeCtrl.sayHello();
-			}
-		}
-	})
-
-	.directive("howdy", function () {
-		return {
-			require: "welcome",
-			link: function (scope, element, attrs, welcomeCtrl) {
-				welcomeCtrl.sayHowdy();
-			}
-		};
-	})
-
-	.directive("hi", function () {
-		return {
-			require: "welcome",
-			link: function (scope, element, attrs, welcomeCtrl) {
-				welcomeCtrl.sayHi();
-			}
-		};
-	});
