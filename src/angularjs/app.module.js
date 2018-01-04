@@ -1,22 +1,30 @@
-var app = angular.module('app', []);
+var app = angular.module('app', [])
 
-app.controller('ExampleController', [function () {
 
-	var self = this;
+app.factory('getData', ['$timeout', '$q', function getData($timeout, $q) {
+	return function () {
 
-	self.master = {};
 
-	self.update = function (user) {
-		self.master = angular.copy(user);
-	};
+		var defer = $q.defer()
+		// simulated async function
+		$timeout(function () {
+			if (Math.round(Math.random())) {
+				defer.resolve('data received!')
+			} else {
+				defer.reject('oh no an error! try again')
+			}
+		}, 2000)
 
-	self.reset = function () {
-/*		if (form) {
-			form.$setPristine();
-			form.$setUntouched();
-		}*/
-		self.user = angular.copy(self.master);
-	};
+		return defer.promise;
+	}
+}]);
 
-	self.reset();
-    }]);
+app.controller('myCtrl', ['getData', function (getData) {
+	var promise = getData().then(function (data) {
+		console.log(data);
+	}, function (error) {
+		console.log(error)
+	}).finally(function () {
+		console.log('Finished at:', new Date())
+	})
+}]);

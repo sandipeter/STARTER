@@ -38,46 +38,8 @@
 	</nav>
 
 	<div ng-app="app">
-		<div ng-controller="ExampleController as exC">
+	<div ng-controller="myCtrl"></div>
 
-			<form name="form" class="css-form" novalidate>
-
-				<label>Name:
-				<input type="text" ng-model="exC.user.name" name="uName" required="" />
-				</label>
-				<br />
-				<div ng-show="form.$submitted || form.uName.$touched">
-					<span ng-show="form.uName.$error.required">Tell us your name</span>
-				</div>
-
-
-				<label>E-mail:
-				<input type="email" ng-model="exC.user.email" name="uEmail" required="" />
-				</label
-				><br />
-				<div ng-show="form.$submitted || form.uEmail.$touched">
-					<span ng-show="form.uEmail.$error.required">Tell us your mail</span>
-					<span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-				</div>
-
-				Gender: <label><input type="radio" ng-model="exC.user.gender" value="male" />male</label>
-				<label><input type="radio" ng-model="exC.user.gender" value="female" />female</label><br />
-
-				<label>
-    					<input type="checkbox" ng-model="exC.user.agree" name="userAgree" required="" />
-    			I agree:</label>
-    			<input ng-show="exC.user.agree" type="text" ng-model="exC.user.agreeSign" required="" />
-				<div ng-show="form.$submitted || form.userAgree.$touched">
-					<span  ng-show="!user.agree || !user.agreeSign">Please agree and sign.</span>
-				</div>
-
-
-				<input type="button" ng-click="exC.reset()" value="Reset" />
-				<input type="submit" ng-click="exC.update(exC.user)" value="Save" />
-			</form>
-			<pre>user = {{exC.user | json}}</pre>
-			<pre>master = {{exC.master | json}}</pre>
-		</div>
 	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 	<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
