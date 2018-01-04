@@ -38,11 +38,14 @@
 	</nav>
 
 	<div ng-app="app">
-		<div ng-controller="MainCtrl as main">
-			<p>{{ main.message }}</p>
-			<form ng-submit="main.changeMessage(main.newMessage)">
-				<input type="text" ng-model="main.newMessage">
-				<button type="submit">Change Message</button>
+		<h1>Services</h1>
+		<div ng-controller="ListCtrl as list">
+			<p ng-repeat="message in list.messages">{{ message.id }}: {{ message.text }}</p>
+		</div>
+		<div ng-controller="PostCtrl as post">
+			<form ng-submit="post.addMessage(post.newMessage)">
+				<input type="text" ng-model="post.newMessage">
+				<button type="submit">hozzáad</button>
 			</form>
 		</div>
 	</div>

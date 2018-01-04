@@ -1,11 +1,33 @@
 var app = angular.module('app', []);
 
-app.controller('MainCtrl', function(){
-  var self = this;
+app.factory('messages', function () {
 
-  self.message = 'hello';
+	var messages = {};
 
-  self.changeMessage = function(message){
-    self.message = message;
-  };
+	messages.list = [];
+
+	messages.add = function(message) {
+		messages.list.push({id: messages.list.length, text: message});
+	};
+
+	return messages;
+
+
 });
+
+app.controller('ListCtrl', ['messages', function(messages){
+
+	var self = this;
+	self.messages = messages.list;
+
+}]);
+
+app.controller('PostCtrl', ['messages', function(messages){
+
+	var self = this;
+	self.addMessage = function(message){
+		messages.add(message);
+		self.newMessage = ''
+	}
+
+}]);
