@@ -1,18 +1,16 @@
+angular.module('functionalities', [])
+	.directive("entering", [function() {
+		return function(scope, element, attrs) {
+			element.bind("mouseenter", function() {
+				element.addClass(attrs.entering);
+			})
+		}
+	}])
 
-
-angular.module('greetings', [])
-.directive("welcome", [function() {
-  return {
-    restrict: "AE",
-    template: "<div>Howdy there! You look splendid.</div>"
-  }
-}])
-
-.directive("goodbye", [function(){
-  return {
-    restrict: "A",
-    link: function(){
-		alert("godbye");
-	}
-  }
-}]);
+	.directive("leaving", [function() {
+		return function(scope, element, attrs) {
+			element.bind("mouseleave", function() {
+				element.removeClass(attrs.entering);
+			})
+		}
+	}]);
