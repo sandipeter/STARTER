@@ -37,11 +37,13 @@
 		</div>
 	</nav>
 
-	<div ng-app="expressionExample">
-		<div class="example2" ng-controller="ExampleController">
-			Name: <input ng-model="name" type="text">
-			<button ng-click="greet()">Greet</button>
-			<button ng-click="window.alert('valami')">Won't greet</button>
+	<div ng-app="app">
+		<div ng-controller="MainCtrl as main">
+			<p>{{ main.message }}</p>
+			<form ng-submit="main.changeMessage(main.newMessage)">
+				<input type="text" ng-model="main.newMessage">
+				<button type="submit">Change Message</button>
+			</form>
 		</div>
 	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
