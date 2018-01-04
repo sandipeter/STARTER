@@ -37,9 +37,9 @@
 		</div>
 	</nav>
 
-  <body ng-app="functionalities">
-    <div entering="activeClass" leaving>Hover over me for fun times</div>
-  </body>
+	<div ng-app="coolApp" ng-controller="FunCtrl as fun">
+		<div entering="fun.end()">Hover over me for fun times</div>
+	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 	<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
 	<!--<script src="bower_components/angular/angular.min.js"></script>-->

@@ -1,16 +1,24 @@
-angular.module('functionalities', [])
-	.directive("entering", [function() {
-		return function(scope, element, attrs) {
-			element.bind("mouseenter", function() {
-				element.addClass(attrs.entering);
-			})
-		}
-	}])
+function FunCtrl() {
+	var self = this;
 
-	.directive("leaving", [function() {
-		return function(scope, element, attrs) {
-			element.bind("mouseleave", function() {
-				element.removeClass(attrs.entering);
-			})
-		}
-	}]);
+	self.start = function () {
+		console.log('started');
+	}
+
+	self.end = function () {
+		console.log("Fun time is over.");
+	}
+}
+
+
+var app = angular.module('coolApp', [])
+
+app.controller('FunCtrl', [FunCtrl])
+
+app.directive("entering", [function () {
+	return function (scope, element, attrs) {
+		element.bind("mouseenter", function () {
+			scope.$apply(attrs.entering);
+		})
+	}
+	}])
