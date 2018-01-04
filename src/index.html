@@ -39,10 +39,11 @@
 
 	<div ng-app="app">
 		<div ng-controller="ExampleController as exC">
-			<form novalidate class="simple-form">
-				<label>Name: <input type="text" ng-model="exC.user.name" /></label><br />
-				<label>E-mail: <input type="email" ng-model="exC.user.email" /></label><br /> Best Editor: <label><input type="radio" ng-model="exC.user.preference" value="vi" />vi</label>
-				<label><input type="radio" ng-model="exC.user.preference" value="emacs" />emacs</label><br />
+			<form novalidate class="css-form">
+				<label>Name: <input type="text" ng-model="exC.user.name" required /></label><br />
+				<label>E-mail: <input type="email" ng-model="exC.user.email" required /></label><br />
+				Gender: <label><input type="radio" ng-model="exC.user.gender" value="male" />male</label>
+				<label><input type="radio" ng-model="exC.user.gender" value="female" />female</label><br />
 				<input type="button" ng-click="exC.reset()" value="Reset" />
 				<input type="submit" ng-click="exC.update(exC.user)" value="Save" />
 			</form>
