@@ -38,15 +38,16 @@
 	</nav>
 
 	<div ng-app="app">
-		<h1>Services</h1>
-		<div ng-controller="ListCtrl as list">
-			<p ng-repeat="message in list.messages">{{ message.id }}: {{ message.text }}</p>
-		</div>
-		<div ng-controller="PostCtrl as post">
-			<form ng-submit="post.addMessage(post.newMessage)">
-				<input type="text" ng-model="post.newMessage">
-				<button type="submit">hozzáad</button>
+		<div ng-controller="ExampleController as exC">
+			<form novalidate class="simple-form">
+				<label>Name: <input type="text" ng-model="exC.user.name" /></label><br />
+				<label>E-mail: <input type="email" ng-model="exC.user.email" /></label><br /> Best Editor: <label><input type="radio" ng-model="exC.user.preference" value="vi" />vi</label>
+				<label><input type="radio" ng-model="exC.user.preference" value="emacs" />emacs</label><br />
+				<input type="button" ng-click="exC.reset()" value="Reset" />
+				<input type="submit" ng-click="exC.update(exC.user)" value="Save" />
 			</form>
+			<pre>user = {{exC.user | json}}</pre>
+			<pre>master = {{exC.master | json}}</pre>
 		</div>
 	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->

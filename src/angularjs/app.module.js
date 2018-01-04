@@ -1,33 +1,18 @@
 var app = angular.module('app', []);
 
-app.factory('messages', function () {
+app.controller('ExampleController', [function() {
 
-	var messages = {};
+	var self = this;
 
-	messages.list = [];
+	self.master = {};
 
-	messages.add = function(message) {
-		messages.list.push({id: messages.list.length, text: message});
+	self.update = function(user) {
+		self.master = angular.copy(user);
 	};
 
-	return messages;
+	self.reset = function() {
+		self.user = angular.copy(self.master);
+	};
 
-
-});
-
-app.controller('ListCtrl', ['messages', function(messages){
-
-	var self = this;
-	self.messages = messages.list;
-
-}]);
-
-app.controller('PostCtrl', ['messages', function(messages){
-
-	var self = this;
-	self.addMessage = function(message){
-		messages.add(message);
-		self.newMessage = ''
-	}
-
-}]);
+	self.reset();
+    }]);
