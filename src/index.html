@@ -37,19 +37,9 @@
 		</div>
 	</nav>
 
-	<div ng-app="app">
-		<div ng-controller="TestCtrl as test">
-			<input type="text" ng-model="test.myString" />
-			<h2>
-				{{ test.myString | capitalize }}
-			</h2>
-			<br>
-			Search: <input type="text" ng-model="test.search">
-			<p ng-repeat="person in test.people | filter: test.search | orderBy:'name'  | limitTo: 5">
-				{{person.name}}, {{person.born}}
-			</p>
-		</div>
-
+	<div ng-app="greetings">
+		<welcome></welcome>
+		<div welcome goodbye></div>
 	</div>
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 	<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->

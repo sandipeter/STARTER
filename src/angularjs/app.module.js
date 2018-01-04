@@ -1,30 +1,18 @@
-function TestCtrl() {
-	var self = this;
-	self.myString = "hello world";
 
-	self.people = [
-		{
-			name: "Eric Simons",
-			born: "Chicago"
-      },
-		{
-			name: "Albert Pai",
-			born: "Taiwan"
-      },
-		{
-			name: "Matthew Greenster",
-			born: "Virginia"
-      }
-    ];
 
-}
+angular.module('greetings', [])
+.directive("welcome", [function() {
+  return {
+    restrict: "AE",
+    template: "<div>Howdy there! You look splendid.</div>"
+  }
+}])
 
-function CapitalizeFilter() {
-	return function (text) {
-		return text.toUpperCase();
+.directive("goodbye", [function(){
+  return {
+    restrict: "A",
+    link: function(){
+		alert("godbye");
 	}
-}
-
-angular.module('app', [])
-	.controller('TestCtrl', [TestCtrl])
-	.filter('capitalize', CapitalizeFilter);
+  }
+}]);
