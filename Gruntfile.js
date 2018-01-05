@@ -12,6 +12,7 @@ module.exports = function (grunt) {
                     'src/bower_components/jquery/dist/jquery.min.js',
                     'src/bower_components/bootstrap/dist/js/bootstrap.min.js',
                     'src/bower_components/angular/angular.js',
+					'src/bower_components/angular-route/angular-route.js',
 					'src/angularjs/**/*.module.js',
 					'src/angularjs/**/*.component.js',
 					'src/angularjs/**/*.filter.js',

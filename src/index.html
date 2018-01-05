@@ -37,18 +37,13 @@
 		</div>
 	</nav>
 
-	<div ng-app="phoneApp">
-		<div ng-controller="AppController">
-			<phone number="555-1234" network="network" make-call="leaveVoicemail(number, message)"></phone>
-			<phone number="867-5309" network="network" make-call="leaveVoicemail(number, message)"></phone>
-			<phone number="911" network="network" make-call="leaveVoicemail(number, message)"></phone>
-		</div>
+	<div ng-app="app">
+		<div ng-view></div>
 	</div>
-
 
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 	<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
-	<!--<script src="bower_components/angular/angular.min.js"></script>-->
+	<!--<script src="bower_components/angular-route/angular-ruote.min.js"></script>-->
 	<!--<script src="angularjs/app.module.js"></script>-->
 	<script src="js/all.js"></script>
 </body>

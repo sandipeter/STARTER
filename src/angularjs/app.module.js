@@ -1,23 +1,21 @@
-var app = angular.module('phoneApp', []);
+function TestCtrl($templateCache) {
+	this.user = {
+		name: 'Blake'
+	};
+	console.log($templateCache.get('test.html'));
+}
 
-app.controller('AppController', ['$scope', function($scope){
-  $scope.leaveVoicemail = function(number, message){
-    alert('Number: ' + number + ' said: ' + message);
-  };
+angular.module('app', ['ngRoute'])
+	.config(['$routeProvider', function ($routeProvider) {
+		$routeProvider.when('/', {
+				controller: 'TestCtrl as test',
+				templateUrl: 'test.html'
+			})
+			.otherwise('/');
+	}])
+	.controller('TestCtrl', ['$templateCache', TestCtrl]);
+
+
+angular.module('app').run(['$templateCache', function ($templateCache){
+  $templateCache.put('test.html', 'Hello {{ test.user.name }}!');
 }]);
-
-app.directive('phone', function(){
-  return {
-    restrict: 'E',
-    scope: {
-      number: '@',
-      network: '=',
-      makeCall: '&'
-    },
-    templateUrl: 'angularjs/views/phone.html',
-    link: function(scope){
-        scope.networks = ["Verizon", "AT&T", "Sprint"];
-        scope.network = scope.networks[0];
-      }
-  };
-});
