@@ -1,35 +1,23 @@
-var app = angular.module("app",[]);
+var app = angular.module('phoneApp', []);
 
-app.directive("country", function () {
+app.controller('AppController', ['$scope', function($scope){
+  $scope.leaveVoicemail = function(number, message){
+    alert('Number: ' + number + ' said: ' + message);
+  };
+}]);
+
+app.directive('phone', function(){
   return {
     restrict: 'E',
-	controller: function(){
-		this.makeAnnouncement = function(message){
-			console.log("Country says: " + message);
-		}
-	}
-
-  };
-});
-
-app.directive("state", function () {
-  return {
-    restrict: "E",
-    controller: function () {
-      this.makeLaw = function (law) {
-        console.log("Law: " + law);
-      };
-    }
-  };
-});
-
-app.directive("city", function () {
-  return {
-    restrict: "E",
-    require: ["^country","^state"],
-    link: function (scope, element, attrs, ctrls) {
-      ctrls[0].makeAnnouncement("This city rocks");
-      ctrls[1].makeLaw("Jump higher");
-    }
+    scope: {
+      number: '@',
+      network: '=',
+      makeCall: '&'
+    },
+    templateUrl: 'angularjs/views/phone.html',
+    link: function(scope){
+        scope.networks = ["Verizon", "AT&T", "Sprint"];
+        scope.network = scope.networks[0];
+      }
   };
 });
