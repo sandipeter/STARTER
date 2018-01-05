@@ -1,21 +1,28 @@
-function TestCtrl($templateCache) {
-	this.user = {
-		name: 'Blake'
-	};
-	console.log($templateCache.get('test.html'));
-}
+var app = angular.module('myApp', ['ngRoute'])
 
-angular.module('app', ['ngRoute'])
-	.config(['$routeProvider', function ($routeProvider) {
-		$routeProvider.when('/', {
-				controller: 'TestCtrl as test',
-				templateUrl: 'test.html'
-			})
-			.otherwise('/');
-	}])
-	.controller('TestCtrl', ['$templateCache', TestCtrl]);
-
-
-angular.module('app').run(['$templateCache', function ($templateCache){
-  $templateCache.put('test.html', 'Hello {{ test.user.name }}!');
+app.config(['$routeProvider', function ($routeProvider) {
+	$routeProvider.when("/", {
+			templateUrl: "angularjs/views/phone.html",
+			controller: "AppCtrl",
+			controllerAs: "app"
+		}).when('/cookies', {
+			redirectTo: function (routeParams, path, search){
+				console.log(routeParams);
+				console.log(path);
+				console.log(search);
+				return "/" + routeParams.cookieType;
+			}
+		})
+		.when('/sugar', {
+			template: 'Sugar cookie'
+		})
+		.otherwise({
+			redirectTo: '/'
+		})
 }]);
+
+app.controller('AppCtrl', ['$routeParams', function ($routeParams) {
+
+	var self = this;
+	self.message = "The app routing is working!"
+}])
