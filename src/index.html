@@ -37,8 +37,9 @@
 		</div>
 	</nav>
 
-	<div ng-app="myApp">
-		<ng-view></ng-view>
+	<div ng-app="app" ng-controller="TestCtrl as test">>
+		<input ng-model="test.sendMessage" placeholder="Enter a message">
+		<button ng-click="test.postData(test.sendMessage)">uppercase</button>
 	</div>
 
 	<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
